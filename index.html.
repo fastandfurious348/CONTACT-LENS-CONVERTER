@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eyeglass to Contact Lens Converter</title>
+</head>
+<body>
+    <h1>Eyeglass to Contact Lens Converter</h1>
+    <form id="converterForm">
+        <label for="eyeglassPower">Enter Eyeglass Power:</label>
+        <input type="number" id="eyeglassPower" step="0.01" required>
+        <button type="button" onclick="convertPower()">Convert</button>
+    </form>
+    <p id="result"></p>
+    <script>
+        function convertPower() {
+            const eyeglassPower = parseFloat(document.getElementById('eyeglassPower').value);
+            const vertexDistance = 0.012; // 12mm converted to meters
+            const contactLensPower = eyeglassPower / (1 - (vertexDistance * eyeglassPower));
+            document.getElementById('result').textContent = `Contact Lens Power: ${contactLensPower.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
